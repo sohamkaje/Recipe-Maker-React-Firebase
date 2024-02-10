@@ -7,21 +7,15 @@ const signup = () => {
     <form>
       <h3>Recipe Maker</h3>
 
-      <label for="username">Username</label>
-      <input type="text" placeholder="Email or Phone" id="username"></input>
+      <label for="username">Enter Email:</label>
+      <input type="text" placeholder="Email" id="username"></input>
 
-      <label for="password">Password</label>
+      <label for="password">Enter Password:</label>
       <input type="password" placeholder="Password" id="password"></input>
 
-      <button>Log In</button>
-      <div class="social">
-        <Link to="/recipe" class="go">
-          <button>Sign in with Google</button>
-        </Link>
-        <Link to="/create-new-account" class="fb">
-          <button>Create Account</button>
-        </Link>
-      </div>
+      <Link to="/data-collection">
+          <button>Register</button>
+      </Link>
     </form>
   </body>
   )

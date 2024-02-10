@@ -15,7 +15,7 @@ const Login = () => {
 
           <button>Log In</button>
           <div class="social">
-            <Link to="/recipe" class="go">
+            <Link to="/data-collection" class="go">
               <button>Sign in with Google</button>
             </Link>
             <Link to="/create-new-account" class="fb">
