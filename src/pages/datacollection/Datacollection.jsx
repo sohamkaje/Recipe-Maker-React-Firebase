@@ -50,7 +50,7 @@ const DataCollection = () => {
 
   return (
     <div class="dataCollectionContainer">
-      <h1>Choose Your Preferences</h1>
+      <h1 class="preferenceTitle">Choose Your Preferences</h1>
       <div className="dietBox">
         <h2>Diet</h2>
         <select id='dietpreferences' value={dietPreference} onChange={e => setDietPreference(e.target.value)}>
@@ -64,11 +64,13 @@ const DataCollection = () => {
       </div>
       <div className="healthBox">
         <h2>Health</h2>
-        {healthOptions.map(option => (
-          <button key={option} onClick={() => handleHealthButtonClick(option)} className={healthPreferences.includes(option) ? 'selected' : ''}>
-            {option}
-          </button>
-        ))}
+        <div class="healthOptions">
+          {healthOptions.map(option => (
+            <button key={option} onClick={() => handleHealthButtonClick(option)} className={healthPreferences.includes(option) ? 'selected' : ''}>
+              {option}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="cuisineType">
         <h2>Cuisine</h2>
