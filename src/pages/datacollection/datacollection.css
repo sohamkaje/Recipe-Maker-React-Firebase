@@ -9,8 +9,7 @@
 .preferenceTitle{
     color: black;
     font-size: 50px;
-    display: flex;
-    justify-content: center;
+    padding-right: 50px;
 }
 
 .dataOptions{
@@ -48,5 +47,17 @@
     row-gap: 20px;
     font-size: 30px;
     padding-left: 300px;
+}
+
+.titleb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleb button{
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./datacollection.css"
 
 const RecipeSearch = () => {
@@ -33,7 +34,12 @@ const RecipeSearch = () => {
 
   return (
     <div class="dataCollectionContainer">
-      <h1 class="preferenceTitle">Choose Your Preferences</h1>
+      <div class="titleb">
+        <h1 class="preferenceTitle">Choose Your Preferences</h1>
+        <Link to="/">
+          <button>Log Off</button>
+        </Link>
+      </div>
 
       <div class="optionBox">
 
