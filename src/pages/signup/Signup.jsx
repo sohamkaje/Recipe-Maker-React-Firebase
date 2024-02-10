@@ -1,29 +1,45 @@
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './signup.css';
+import { createAcct } from '/Users/aditiyasaisiva/Documents/GitHub/Recipe-Maker-React-Firebase/src/Firebase/firebase.js'; // Adjust the import path as necessary
 
-const signup = () => {
+const Signup = () => {
+  let navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+    const email = event.target.username.value;
+    const password = event.target.password.value;
+
+    // Use createAcct from firebase.js to attempt creating a new user
+    createAcct(email, password)
+      .then((userCredential) => {
+        // Account creation successful, userCredential contains information about the newly created user
+        console.log(userCredential.user); // For debugging purposes, you might want to remove it later
+        navigate('/data-collection'); // Redirect to '/data-collection' upon successful account creation
+      })
+      .catch((error) => {
+        // Handle errors here, such as displaying a message to the user
+        console.error("Error creating user:", error.message);
+        alert("Failed to create account: " + error.message); // Display a simple error message
+      });
+  };
+
   return (
-    <body>
-    <form>
-      <h3>Recipe Maker</h3>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h3>Recipe Maker</h3>
 
-      <label for="username">Enter Email:</label>
-      <input type="text" placeholder="Email" id="username"></input>
+        <label htmlFor="username">Enter Email:</label>
+        <input type="email" placeholder="Email" id="username" name="username" required />
 
-      <label for="password">Enter Password:</label>
-      <input type="password" placeholder="Password" id="password"></input>
+        <label htmlFor="password">Enter Password:</label>
+        <input type="password" placeholder="Password" id="password" name="password" required />
 
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  );
+};
 
-      <Link to="/data-collection">
-          <button>Register</button>
-      </Link>
-    </form>
-  </body>
-  )
-}
-
-export default signup;
+export default Signup;
