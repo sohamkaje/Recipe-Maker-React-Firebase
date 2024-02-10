@@ -1,30 +1,56 @@
-import {Link} from 'react-router-dom';
+import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import "./login.css";
 
 const Login = () => {
+    let navigate = useNavigate();
+    const auth = getAuth();
+
+    const handleLogin = async (e) => {
+        e.preventDefault(); // Prevent the default form submission
+        const email = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            navigate('/data-collection'); // Redirect the user after successful login
+        } catch (error) {
+            alert(error.message); // Display error message
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await signInWithPopup(auth, provider);
+            navigate('/data-collection'); // Redirect the user after successful login
+        } catch (error) {
+            alert(error.message); // Display error message
+        }
+    };
+
     return (
-      <body>
-        <form>
-          <h3>Recipe Maker</h3>
+        <body>
+            <form onSubmit={handleLogin}>
+                <h3>Recipe Maker</h3>
 
-          <label for="username">Username</label>
-          <input type="text" placeholder="Email" id="username"></input>
+                <label htmlFor="username">Username</label>
+                <input type="text" placeholder="Email" id="username" />
 
-          <label for="password">Password</label>
-          <input type="password" placeholder="Password" id="password"></input>
+                <label htmlFor="password">Password</label>
+                <input type="password" placeholder="Password" id="password" />
 
-          <button>Log In</button>
-          <div class="social">
-            <Link to="/data-collection" class="go">
-              <button>Sign in with Google</button>
-            </Link>
-            <Link to="/create-new-account" class="fb">
-              <button>Create Account</button>
-            </Link>
-          </div>
-        </form>
-      </body>
+                <button type="submit">Log In</button>
+            </form>
+            <div className="social">
+                <button onClick={handleGoogleSignIn} className="go">Sign in with Google</button>
+                <Link to="/create-new-account" className="fb">
+                    <button>Create Account</button>
+                </Link>
+            </div>
+        </body>
     );
 }
 
-export default Login
+export default Login;
