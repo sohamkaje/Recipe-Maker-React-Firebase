@@ -19,12 +19,12 @@ const Login = () => {
 
           <button>Log In</button>
           <div class="social">
-            <div class="go">
+            <Link to="/recipe" class="go">
               <button>Sign in with Google</button>
-            </div>
-            <div class="fb">
+            </Link>
+            <Link to="/create-new-account" class="fb">
               <button>Create Account</button>
-            </div>
+            </Link>
           </div>
         </form>
       </body>
