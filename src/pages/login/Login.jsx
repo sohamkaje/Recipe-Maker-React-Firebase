@@ -33,7 +33,7 @@ const Login = () => {
     return (
         <div class="loginContainer">
             <form onSubmit={handleLogin}>
-                <h3>Recipe Maker</h3>
+                <h3>Meals 4 Me</h3>
 
                 <label htmlFor="username">Username</label>
                 <input type="text" placeholder="Email" id="username" />

@@ -28,7 +28,7 @@ const Signup = () => {
   return (
     <div class="loginContainer">
       <form onSubmit={handleSubmit}>
-        <h3>Recipe Maker</h3>
+        <h3>Meals 4 Me</h3>
 
         <label htmlFor="username">Enter Email:</label>
         <input type="email" placeholder="Email" id="username" name="username" required />
