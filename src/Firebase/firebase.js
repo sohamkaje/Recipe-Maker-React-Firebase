@@ -5,7 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseConfig = {  
   apiKey: "AIzaSyD2dOFOS111YZ-zibekBsrxJ4qLus0lhPE",
   authDomain: "recipe-maker-423a7.firebaseapp.com",
   projectId: "recipe-maker-423a7",
