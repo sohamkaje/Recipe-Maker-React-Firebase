@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './signup.css';
-import { createAcct } from '/Users/aditiyasaisiva/Documents/GitHub/Recipe-Maker-React-Firebase/src/Firebase/firebase.js'; // Adjust the import path as necessary
+import { createAcct } from '../../Firebase/firebase.js';
 
 const Signup = () => {
   let navigate = useNavigate();
