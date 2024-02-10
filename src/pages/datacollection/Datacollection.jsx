@@ -1,83 +1,104 @@
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './datacollection.css';
+import { getDatabase, ref, set } from 'firebase/database';
 
-const datacollection = () => {
+const healthOptions = [
+  'alcohol-free', 'dairy-free', 'egg-free', 'fish-free', 'gluten-free',
+  'keto-friendly', 'kidney-friendly', 'low-fat-abs', 'low-potassium',
+  'low-sugar', 'no-oil-added', 'peanut-free', 'pescatarian',
+  'pork-free (halal)', 'red-meat-free', 'sesame-free', 'soy-free',
+  'sugar-conscious', 'tree-nut-free', 'vegan', 'vegetarian', 'wheat-free',
+];
+
+const DataCollection = () => {
+  const [dietPreference, setDietPreference] = useState('Balanced');
+  const [healthPreferences, setHealthPreferences] = useState([]);
+  const [cuisinePreference, setCuisinePreference] = useState('American');
+  const [mealTypePreference, setMealTypePreference] = useState('Breakfast');
+  let navigate = useNavigate();
+
+  const handleHealthButtonClick = (preference) => {
+    setHealthPreferences(prev => {
+      if (prev.includes(preference)) {
+        return prev.filter(p => p !== preference);
+      } else {
+        return [...prev, preference];
+      }
+    });
+  };
+
+  const handleSubmit = () => {
+    const db = getDatabase();
+    // Replace colons and periods in the ISO string with underscores
+    const datePath = new Date().toISOString().replace(/[\:\.]/g, '_');
+    const preferencesRef = ref(db, 'preferences/' + datePath);
+    set(preferencesRef, {
+      diet: dietPreference,
+      health: healthPreferences,
+      cuisine: cuisinePreference,
+      mealType: mealTypePreference
+    }).then(() => {
+      // Data saved successfully!
+      navigate('/generate-recipes'); // Adjust the route as necessary
+    }).catch((error) => {
+      // The write failed...
+      console.error("Error saving preferences: ", error);
+    });
+  };
+  
+
   return (
-    <div class co>
+    <div>
       <h1>Choose Your Preferences</h1>
-      <div class="dietBox">
+      <div className="dietBox">
         <h2>Diet</h2>
-        <select id='dietpreferences'>
-          <option>Balanced</option>
-          <option>High-Fiber</option>
-          <option>high-protein</option>
-          <option>low-carb</option>
-          <option>low-fat</option>
-          <option>low-sodium</option>
+        <select id='dietpreferences' value={dietPreference} onChange={e => setDietPreference(e.target.value)}>
+          <option value="Balanced">Balanced</option>
+          <option value="High-Fiber">High-Fiber</option>
+          <option value="High-Protein">High-Protein</option>
+          <option value="Low-Carb">Low-Carb</option>
+          <option value="Low-Fat">Low-Fat</option>
+          <option value="Low-Sodium">Low-Sodium</option>
         </select>
       </div>
-      <div class="healthBox">
+      <div className="healthBox">
         <h2>Health</h2>
-        <button>alcohol-free</button>
-        <button>dairy-free</button>
-        <button>egg-free</button>
-        <button>fish-free</button>
-        <button>gluten-free</button>
-        <button>keto-friendly</button>
-        <button>kidney-friendly</button>
-        <button>low-fat-abs</button>
-        <button>low-potassium</button>
-        <button>low-sugar</button>
-        <button>no-oil-added</button>
-        <button>peanut-free</button>
-        <button>pescatarian</button>
-        <button>pork-free (halal)</button>
-        <button>red-meat-free</button>
-        <button>sesame-free</button>
-        <button>soy-free</button>
-        <button>sugar-conscious</button>
-        <button>tree-nut-free</button>
-        <button>vegan</button>
-        <button>vegetarian</button>
-        <button>wheat-free</button>
+        {healthOptions.map(option => (
+          <button key={option} onClick={() => handleHealthButtonClick(option)} className={healthPreferences.includes(option) ? 'selected' : ''}>
+            {option}
+          </button>
+        ))}
       </div>
-      <div class="cuisineType">
+      <div className="cuisineType">
         <h2>Cuisine</h2>
-        <select id='cuisinepreferences'>
-          <option>American</option>
-          <option>Asian</option>
-          <option>Caribbean</option>
-          <option>Central Europe</option>
-          <option>Chinese</option>
-          <option>Eastern Europe</option>
-          <option>French</option>
-          <option>Indian</option>
-          <option>Italian</option>
-          <option>Japanese</option>
-          <option>Mediterranean</option>
-          <option>Mexican</option>
-          <option>Middle Eastern</option>
-          <option>Nordic</option>
-          <option>South American</option>
-          <option>South East Asian</option>
+        <select id='cuisinepreferences' value={cuisinePreference} onChange={e => setCuisinePreference(e.target.value)}>
+          <option value="American">American</option>
+          <option value="Asian">Asian</option>
+          <option value="Caribbean">Caribbean</option>
+          <option value="Chinese">Chinese</option>
+          <option value="French">French</option>
+          <option value="Indian">Indian</option>
+          <option value="Italian">Italian</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Mediterranean">Mediterranean</option>
+          <option value="Mexican">Mexican</option>
         </select>
       </div>
-      <div class="mealTypeBox">
-        <h2>Diet</h2>
-        <select id='mealTypepreferences'>
-          <option>Balanced</option>
-          <option>High-Fiber</option>
-          <option>high-protein</option>
-          <option>low-carb</option>
-          <option>low-fat</option>
-          <option>low-sodium</option>
+      <div className="mealTypeBox">
+        <h2>Meal Type</h2>
+        <select id='mealTypepreferences' value={mealTypePreference} onChange={e => setMealTypePreference(e.target.value)}>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
         </select>
       </div>
-      <div class="submitBox">
-        <button>Generate Recipe</button>
+      <div className="submitBox">
+        <button onClick={handleSubmit}>Generate Recipe</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default datacollection;
+export default DataCollection;
