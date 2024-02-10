@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import "./datacollection.css"
 
 const RecipeSearch = () => {
@@ -11,8 +10,6 @@ const RecipeSearch = () => {
 
   const app_id = '348a4428';
   const app_key = '2366e5c8e090e86fb5cc332b1af4aef2';
-
-  let navigate = useNavigate();
 
   const handleSearch = () => {
     // Construct the URL for the Edamam Recipe API based on user-selected parameters
@@ -28,7 +25,6 @@ const RecipeSearch = () => {
       })
       .then(data => {
         setRecipes(data.hits); // Assuming the structure of data is an array of hits containing recipes
-        navigate('/recipe');
       })
       .catch(error => {
         console.error('Error fetching recipes:', error);
