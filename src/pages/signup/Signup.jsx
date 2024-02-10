@@ -13,6 +13,11 @@ const signup = () => {
       <label for="password">Enter Password:</label>
       <input type="password" placeholder="Password" id="password"></input>
 
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+
       <Link to="/data-collection">
           <button>Register</button>
       </Link>
