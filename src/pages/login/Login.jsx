@@ -42,13 +42,14 @@ const Login = () => {
                 <input type="password" placeholder="Password" id="password" />
 
                 <button type="submit">Log In</button>
-            </form>
             <div className="social">
                 <button onClick={handleGoogleSignIn} className="go">Sign in with Google</button>
                 <Link to="/create-new-account" className="fb">
                     <button>Create Account</button>
                 </Link>
             </div>
+            </form>
+
         </body>
     );
 }
