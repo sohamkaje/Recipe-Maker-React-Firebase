@@ -10,7 +10,6 @@ const Signup = () => {
     event.preventDefault(); // Prevents the default form submission behavior
     const email = event.target.username.value;
     const password = event.target.password.value;
-    const confirmPass = event.target.confirmPass.value;
 
     // Use createAcct from firebase.js to attempt creating a new user
     createAcct(email, password)
@@ -27,7 +26,7 @@ const Signup = () => {
   };
 
   return (
-    <div class="signupContainer">
+    <div class="loginContainer">
       <form onSubmit={handleSubmit}>
         <h3>Recipe Maker</h3>
 
@@ -37,8 +36,7 @@ const Signup = () => {
         <label htmlFor="password">Enter Password:</label>
         <input type="password" placeholder="Password (Min: 8 characters)" id="password" name="password" required />
 
-        <label htmlFor="confirmPass">Confirm Password:</label>
-        <input type="password" placeholder="Retype Password" id="confirmPass" name="confirmPass" required />
+        <br></br>
 
         <button type="submit">Register</button>
 
