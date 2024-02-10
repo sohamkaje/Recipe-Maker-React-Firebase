@@ -113,12 +113,24 @@ const RecipeSearch = () => {
       </div>
       <div class="buttonBox">
         <button onClick={handleSearch}>Search Recipes</button>
-          <ul>
-            {recipes.map((recipe, index) => (
-              <li key={index}>{recipe.recipe.label}</li>
-            ))}
-          </ul>
       </div>
+
+      <ul class="recipes">
+        {recipes.map((recipe, index) => (
+          <li key={index}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img 
+                src={recipe.recipe.image} 
+                style={{ width: '200px', height: '200px', objectFit: 'cover'}}
+              />
+              <span>{recipe.recipe.label} -</span>
+              <a href={recipe.recipe.url} target="_blank" rel="noopener noreferrer">
+                View Recipe
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
