@@ -6,6 +6,7 @@ function App() {
       <h1>Welcome to Recipe Maker</h1>
     </div>
   );
+  
 }
 
 export default App;
