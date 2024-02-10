@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import "./datacollection.css"
 
 const RecipeSearch = () => {
   const [diet, setDiet] = useState([]);
@@ -9,6 +11,8 @@ const RecipeSearch = () => {
 
   const app_id = '348a4428';
   const app_key = '2366e5c8e090e86fb5cc332b1af4aef2';
+
+  let navigate = useNavigate();
 
   const handleSearch = () => {
     // Construct the URL for the Edamam Recipe API based on user-selected parameters
@@ -24,6 +28,7 @@ const RecipeSearch = () => {
       })
       .then(data => {
         setRecipes(data.hits); // Assuming the structure of data is an array of hits containing recipes
+        navigate('/recipe');
       })
       .catch(error => {
         console.error('Error fetching recipes:', error);
@@ -31,7 +36,7 @@ const RecipeSearch = () => {
   };
 
   return (
-    <div>
+    <div class="dataCollectionContainer">
       <h1 class="preferenceTitle">Choose Your Preferences</h1>
       {/* User input for diet preferences */}
       <select multiple value={diet} onChange={e => setDiet(Array.from(e.target.selectedOptions, option => option.value))}>
@@ -98,10 +103,8 @@ const RecipeSearch = () => {
         <option value="Dinner">Dinner</option>
         <option value="Snack">Snack</option>
       </select>
-
-      {/* Button to trigger the recipe search */}
-      <button onClick={handleSearch}>Search Recipes</button>
-
+        
+        <button onClick={handleSearch}>Search Recipes</button>
       {/* Display the list of recipes */}
       <ul>
         {recipes.map((recipe, index) => (
