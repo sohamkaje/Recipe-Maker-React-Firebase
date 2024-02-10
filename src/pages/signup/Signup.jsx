@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './signup.css';
 import { createAcct } from '../../Firebase/firebase.js';
 
@@ -37,6 +37,10 @@ const Signup = () => {
         <input type="password" placeholder="Password (Min: 8 characters)" id="password" name="password" required />
 
         <button type="submit">Register</button>
+
+        <Link to="/" className="fb">
+          <button>Go back</button>
+        </Link>
       </form>
     </div>
   );
