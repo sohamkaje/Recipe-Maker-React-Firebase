@@ -9,7 +9,7 @@ const Login = () => {
           <div class="shape"></div>
         </div>
         <form>
-          <h3>Login Here</h3>
+          <h3>Recipe Maker</h3>
 
           <label for="username">Username</label>
           <input type="text" placeholder="Email or Phone" id="username"></input>
@@ -20,10 +20,10 @@ const Login = () => {
           <button>Log In</button>
           <div class="social">
             <div class="go">
-              <i class="fab fa-google"></i> Google
+              <button>Sign in with Google</button>
             </div>
             <div class="fb">
-              <i class="fab fa-facebook"></i> Facebook
+              <button>Create Account</button>
             </div>
           </div>
         </form>
