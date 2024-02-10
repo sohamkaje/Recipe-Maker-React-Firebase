@@ -27,7 +27,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div class="signupContainer">
       <form onSubmit={handleSubmit}>
         <h3>Recipe Maker</h3>
 
