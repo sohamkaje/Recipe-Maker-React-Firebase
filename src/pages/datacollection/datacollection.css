@@ -3,7 +3,7 @@
     height: 100vh;
     background-image: url('food-bg.jpeg');
     background-size: cover;
-    padding-top: 120px;
+    padding-top: 90px;
 }
 
 .preferenceTitle{
@@ -22,7 +22,7 @@
 .optionBox{
     display: flex;
     justify-content: space-between;
-    padding: 100px 150px 100px 150px;
+    padding: 50px;
     color: black;
 }
 
