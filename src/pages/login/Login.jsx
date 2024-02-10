@@ -43,7 +43,7 @@ const Login = () => {
 
                 <button type="submit" class="loginbtn">Log In</button>
             <div className="social">
-                <button onClick={handleGoogleSignIn} class="loginbtn">Sign in with Google</button>
+                <button onClick={handleGoogleSignIn} class="loginbtn-google">Sign in with Google</button>
                 <Link to="/create-new-account">
                     <button class="loginbtn">Create Account</button>
                 </Link>
