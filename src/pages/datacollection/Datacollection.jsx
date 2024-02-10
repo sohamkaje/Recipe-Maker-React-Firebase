@@ -49,7 +49,7 @@ const DataCollection = () => {
   
 
   return (
-    <div>
+    <div class="dataCollectionContainer">
       <h1>Choose Your Preferences</h1>
       <div className="dietBox">
         <h2>Diet</h2>
