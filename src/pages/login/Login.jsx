@@ -31,7 +31,7 @@ const Login = () => {
     };
 
     return (
-        <body>
+        <div class="loginContainer">
             <form onSubmit={handleLogin}>
                 <h3>Recipe Maker</h3>
 
@@ -50,7 +50,7 @@ const Login = () => {
             </div>
             </form>
 
-        </body>
+        </div>
     );
 }
 
