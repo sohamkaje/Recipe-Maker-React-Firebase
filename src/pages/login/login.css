@@ -57,7 +57,7 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
-button{
+.loginbtn{
     margin-top: 20px;
     width: 100%;
     background-color: #ffffff;
@@ -68,9 +68,11 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
+
 .social{
   margin-top: 20px;
   display: flex;
+  justify-content: space-between;
 }
 .social div{
   width: 150px;
@@ -78,11 +80,4 @@ button{
   padding: 5px 10px 10px 5px;
   color: #eaf0fb;
   text-align: center;
-}
-
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
 }

@@ -41,11 +41,11 @@ const Login = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" placeholder="Password" id="password" />
 
-                <button type="submit">Log In</button>
+                <button type="submit" class="loginbtn">Log In</button>
             <div className="social">
-                <button onClick={handleGoogleSignIn} className="go">Sign in with Google</button>
-                <Link to="/create-new-account" className="fb">
-                    <button>Create Account</button>
+                <button onClick={handleGoogleSignIn} class="loginbtn" id='googlebtn'>Sign in with Google</button>
+                <Link to="/create-new-account">
+                    <button class="loginbtn">Create Account</button>
                 </Link>
             </div>
             </form>
