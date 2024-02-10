@@ -4,10 +4,13 @@ import './signup.css';
 import { createAcct } from '../../Firebase/firebase.js';
 
 const Signup = () => {
+  // Initialize the navigate function using the useNavigate hook from react-router-dom
   let navigate = useNavigate();
 
+  // Event handler for form submission (user registration)
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
+    // Retrieve email and password from the form
     const email = event.target.username.value;
     const password = event.target.password.value;
 

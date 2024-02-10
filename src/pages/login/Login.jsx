@@ -4,15 +4,20 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopu
 import "./login.css";
 
 const Login = () => {
+    // Initialize the navigate function using the useNavigate hook from react-router-dom
     let navigate = useNavigate();
+    // Initialize the auth object using the getAuth function from Firebase
     const auth = getAuth();
 
+    // Event handler for regular email and password login
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent the default form submission
+        // Retrieve the email and password from the input fields
         const email = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
         try {
+            // Attempt to sign in using email and password
             await signInWithEmailAndPassword(auth, email, password);
             navigate('/data-collection'); // Redirect the user after successful login
         } catch (error) {
@@ -20,9 +25,12 @@ const Login = () => {
         }
     };
 
+    // Event handler for Google sign-in
     const handleGoogleSignIn = async () => {
+        // Create a Google authentication provider
         const provider = new GoogleAuthProvider();
         try {
+            // Attempt to sign in with Google using a pop-up
             await signInWithPopup(auth, provider);
             navigate('/data-collection'); // Redirect the user after successful login
         } catch (error) {
