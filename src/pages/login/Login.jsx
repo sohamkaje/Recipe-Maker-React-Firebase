@@ -4,10 +4,6 @@ import "./login.css";
 const Login = () => {
     return (
       <body>
-        <div class="background">
-          <div class="shape"></div>
-          <div class="shape"></div>
-        </div>
         <form>
           <h3>Recipe Maker</h3>
 

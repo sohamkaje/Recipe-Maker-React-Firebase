@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Login />} />
-        <Route path='signup' element={<Signup />} />
+        <Route path='create-new-account' element={<Signup />} />
         <Route path='datacollection' element={<Datacollection />} />
         <Route path='home' element={<Home />} />
       </Routes>
