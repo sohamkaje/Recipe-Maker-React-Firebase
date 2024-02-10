@@ -1,10 +1,9 @@
+import { useNavigate, Link } from 'react-router-dom';
 import './datacollection.css';
 
 const datacollection = () => {
   return (
-    <div class="container">
-      <p>Enter </p>
-    </div>
+    <h1>Choose Your Preferences</h1>
   )
 }
 

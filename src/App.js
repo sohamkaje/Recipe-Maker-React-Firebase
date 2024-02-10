@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route index element={<Login />} />
         <Route path='create-new-account' element={<Signup />} />
-        <Route path='datacollection' element={<Datacollection />} />
-        <Route path='home' element={<Home />} />
+        <Route path='data-collection' element={<Datacollection />} />
+        <Route path='recipe' element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
