@@ -88,7 +88,7 @@ input{
     color: #e5e5e5;
 }
 button{
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100%;
     background-color: #ffffff;
     color: #080710;
@@ -99,7 +99,7 @@ button{
     cursor: pointer;
 }
 .social{
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
 }
 .social div{
