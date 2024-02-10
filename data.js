@@ -10,9 +10,5 @@ export const links = [
     {
         name: "Data Collection",
         path: '/data-collection'
-    },
-    {
-        name: "Generates recipe",
-        path: '/recipe'
     }
 ]
