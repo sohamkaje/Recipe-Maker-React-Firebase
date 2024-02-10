@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import "./datacollection.css"
+import "./datacollection.css";
+import { getDatabase, ref, push } from 'firebase/database'; // Import Firebase database functions
+import { app } from '../../Firebase/firebase.js'; // Make sure to import the Firebase app instance
+
 
 const RecipeSearch = () => {
+  // State hooks remain unchanged
   const [diet, setDiet] = useState([]);
   const [health, setHealth] = useState([]);
   const [cuisineType, setCuisineType] = useState([]);
   const [mealType, setMealType] = useState([]);
   const [recipes, setRecipes] = useState([]);
 
+  // API keys remain unchanged
   const app_id = '348a4428';
   const app_key = '2366e5c8e090e86fb5cc332b1af4aef2';
 
+  const database = getDatabase(app); // Initialize the database with the Firebase app
+
   const handleSearch = () => {
-    // Construct the URL for the Edamam Recipe API based on user-selected parameters
+    // API URL construction remains unchanged
     const apiUrl = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${app_id}&app_key=${app_key}&diet=${diet.join()}&health=${health.join()}&cuisineType=${cuisineType.join()}&mealType=${mealType.join()}`;
 
-    // Make a GET request to the API endpoint
     fetch(apiUrl)
       .then(response => {
         if (!response.ok) {
@@ -25,11 +31,27 @@ const RecipeSearch = () => {
         return response.json();
       })
       .then(data => {
-        setRecipes(data.hits); // Assuming the structure of data is an array of hits containing recipes
+        setRecipes(data.hits); // Save fetched recipes to state
+        // Save user preferences and recipes to Firebase Realtime Database
+        saveToDatabase(diet, health, cuisineType, mealType, data.hits);
       })
       .catch(error => {
         console.error('Error fetching recipes:', error);
       });
+  };
+
+  // Function to save user preferences and recipes to Firebase
+  const saveToDatabase = (diet, health, cuisineType, mealType, recipes) => {
+    const preferencesRef = ref(database, 'userPreferences/'); // Define a path for user preferences
+    const recipesRef = ref(database, 'generatedRecipes/'); // Define a path for generated recipes
+
+    // Push user preferences to the database
+    push(preferencesRef, { diet, health, cuisineType, mealType });
+
+    // Push each recipe to the database
+    recipes.forEach(recipe => {
+      push(recipesRef, recipe.recipe);
+    });
   };
 
   return (

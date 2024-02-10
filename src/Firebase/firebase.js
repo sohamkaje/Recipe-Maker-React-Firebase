@@ -38,3 +38,5 @@ export function checkEmail(email) {
 export function checkPass(password) {
   return password.length >= 7;
 }
+
+export { app, analytics, auth, database };
