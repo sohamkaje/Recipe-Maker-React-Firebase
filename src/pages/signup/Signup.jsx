@@ -34,7 +34,7 @@ const Signup = () => {
         <input type="email" placeholder="Email" id="username" name="username" required />
 
         <label htmlFor="password">Enter Password:</label>
-        <input type="password" placeholder="Password(Min: 8 characters)" id="password" name="password" required />
+        <input type="password" placeholder="Password (Min: 8 characters)" id="password" name="password" required />
 
         <button type="submit">Register</button>
       </form>
