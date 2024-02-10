@@ -1,31 +1,22 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
+import Datacollection from './pages/datacollection/Datacollection';
+import Home from './pages/home/Home';
 
 function App() {
   return (
-    <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form>
-        <h3>Login Here</h3>
-
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username"></input>
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password"></input>
-
-        <button>Log In</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
-        </div>
-    </form>
-</body>
-
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Login />} />
+        <Route path='signup' element={<Signup />} />
+        <Route path='datacollection' element={<Datacollection />} />
+        <Route path='home' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-  
+
 }
 
 export default App;
