@@ -1,11 +1,7 @@
 .dataCollectionContainer {
     width: 100%;
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    height: 100vh;
     background-image: url('stars-bg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .dietBox {

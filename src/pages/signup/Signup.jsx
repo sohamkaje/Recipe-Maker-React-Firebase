@@ -38,10 +38,10 @@ const Signup = () => {
 
         <br></br>
 
-        <button type="submit">Register</button>
+        <button type="submit" class="loginbtn">Register</button>
 
-        <Link to="/" className="fb">
-          <button>Go back</button>
+        <Link to="/">
+          <button class="loginbtn">Go back</button>
         </Link>
       </form>
     </div>
