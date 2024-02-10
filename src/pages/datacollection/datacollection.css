@@ -39,10 +39,14 @@
 }
 
 .recipes{
-    display: flex;
+    display: grid;  
     flex-direction: column;
     justify-content: center;
     align-items: center;
     list-style-type: none;
+    padding-top: 50px;
+    row-gap: 20px;
+    font-size: 30px;
+    padding-left: 300px;
 }
 
