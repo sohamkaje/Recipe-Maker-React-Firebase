@@ -2,7 +2,9 @@ import './datacollection.css';
 
 const datacollection = () => {
   return (
-    <div>Data Collection</div>
+    <div class="container">
+      <p>Enter </p>
+    </div>
   )
 }
 
